@@ -48,7 +48,6 @@ public class PersonService {
         Example<Person> example = Example.of(person, exampleMatcher);
         List<Person> personList = repository.findAll(example);
 
-
         return personList;
     }
 
