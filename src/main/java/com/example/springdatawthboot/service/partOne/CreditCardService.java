@@ -1,21 +1,23 @@
 package com.example.springdatawthboot.service.partOne;
 
-import java.util.List;
 
 import com.example.springdatawthboot.entity.bank.CreditCard;
 import com.example.springdatawthboot.facade.partOne.CreditCardIRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service
 public class CreditCardService {
 
-    @Autowired
-    @Qualifier("creditCardIRepository")
-    CreditCardIRepository repository;
+    private final CreditCardIRepository repository;
 
+    public CreditCardService(@Qualifier("creditCardIRepository")
+                             CreditCardIRepository repository){
+        this.repository = repository;
+    }
 
     public List<CreditCard> creditCards(String cardNumber){
         return repository.findAllByCardNumber(cardNumber);

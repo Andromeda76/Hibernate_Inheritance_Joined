@@ -1,30 +1,30 @@
 package com.example.springdatawthboot;
 
 
-import java.sql.Timestamp;
-import java.time.Instant;
-import java.util.List;
-
 import com.example.springdatawthboot.entity.bank.BankAccount;
 import com.example.springdatawthboot.entity.bank.CreditCard;
-import com.example.springdatawthboot.entity.old.Person;
-import com.example.springdatawthboot.service.old.PersonService;
-import com.example.springdatawthboot.service.old.ViewService;
 import com.example.springdatawthboot.service.partOne.BankAccountService;
 import com.example.springdatawthboot.service.partOne.CreditCardService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.util.List;
+
 
 @SpringBootApplication
 public class SpringDataWthBootApplication {
 
-    @Autowired
-    @Qualifier("bankAccountService")
-    BankAccountService bankAccountService;
+
+    private final BankAccountService bankAccountService;
+
+    public SpringDataWthBootApplication(@Qualifier("bankAccountService")
+                                    BankAccountService bankAccountService){
+            this.bankAccountService = bankAccountService;
+        }
 
 
     public static void main(String[] args) {
