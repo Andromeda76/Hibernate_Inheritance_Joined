@@ -3,12 +3,8 @@ package com.example.springdatawthboot.entity.bank;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
-
-import java.io.Serializable;
 
 
 /**
@@ -17,7 +13,7 @@ import java.io.Serializable;
 
 //@MappedSuperclass
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class BillingDetail {
     @Id
     @GenericGenerator(name = "sequence_generator",

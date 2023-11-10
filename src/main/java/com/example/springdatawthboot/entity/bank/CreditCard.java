@@ -1,12 +1,15 @@
 package com.example.springdatawthboot.entity.bank;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.AttributeOverride;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 import java.sql.Timestamp;
-
 
 
 @Entity
@@ -27,6 +30,7 @@ public class CreditCard extends BillingDetail{
             column = @Column(name = "CreditAccountOwner", columnDefinition = "VARCHAR(100)", nullable = false))
     @Generated(GenerationTime.ALWAYS)
     private String creditAccountOwner;
+
 
     public CreditCard() {
     }
