@@ -1,19 +1,18 @@
 package com.example.springdatawthboot.entity.bank;
 
 
-import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 import java.sql.Timestamp;
 
 
 @Entity
 @Table(name = "CreditCard")
+@PrimaryKeyJoinColumn(name = "ID")
 public class CreditCard extends BillingDetail{
 
     @Column(name = "CardNumber", columnDefinition = "VARCHAR(100)", nullable = true)
@@ -23,13 +22,6 @@ public class CreditCard extends BillingDetail{
     @Column(name = "expireDate", columnDefinition = "DateTime", nullable = false)
     @CreationTimestamp
     private Timestamp expDate;
-
-
-    @AttributeOverride(
-            name = "owner",
-            column = @Column(name = "CreditAccountOwner", columnDefinition = "VARCHAR(100)", nullable = false))
-    @Generated(GenerationTime.ALWAYS)
-    private String creditAccountOwner;
 
 
     public CreditCard() {
@@ -49,14 +41,6 @@ public class CreditCard extends BillingDetail{
 
     public void setExpDate(Timestamp expDate) {
         this.expDate = expDate;
-    }
-
-    public String getCreditAccountOwner() {
-        return creditAccountOwner;
-    }
-
-    public void setCreditAccountOwner(String creditAccountOwner) {
-        this.creditAccountOwner = creditAccountOwner;
     }
 
 }

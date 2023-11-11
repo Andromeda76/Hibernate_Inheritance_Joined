@@ -11,9 +11,9 @@ import org.hibernate.annotations.Parameter;
  * if you use MappedSuperclass alone it does not polymorphism in inheritance.
  */
 
-//@MappedSuperclass
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BillingDetail {
     @Id
     @GenericGenerator(name = "sequence_generator",
@@ -35,13 +35,12 @@ public abstract class BillingDetail {
     private Long id;
 
 
-//    @Column(name = "Owner", columnDefinition = "VARCHAR(100)")
+    @Column(name = "Owner", columnDefinition = "VARCHAR(100)")
     @Size(
             min = 2,
             max = 100,
             message = "accountOwner"
     )
-//    @Generated(GenerationTime.ALWAYS)
     private String owner;
 
 

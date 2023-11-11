@@ -1,7 +1,6 @@
 package com.example.springdatawthboot.entity.bank;
 
 
-import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -9,9 +8,6 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "BankAccount")
-@AttributeOverride(
-        name = "owner",
-        column = @Column(name = "AccountOwner", columnDefinition = "VARCHAR(100)", nullable = true))
 public class BankAccount extends BillingDetail{
 
     @Column(name = "Account", columnDefinition = "VARCHAR(100)", nullable = true)
