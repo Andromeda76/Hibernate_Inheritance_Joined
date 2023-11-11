@@ -7,3 +7,5 @@ because of this we have to annotate repository belong to this class with @NoRepo
 that this repository doesnot have strait relationShip with database;
 instead in @Table_Per_Class we do not have this limitation and when this strategy makes query with database 
 it uses union for making query;
+In both strategies there is no relationShip between tables and in the second one query will interpert to
+Union All strategy in database;
