@@ -8,12 +8,18 @@ import org.hibernate.annotations.Parameter;
 
 
 /**
- * if you use MappedSuperclass alone it does not polymorphism in inheritance.
+ * In @Inheritance(strategy = InheritanceType.SINGLE_TABLE) all extended classes column will be summarized in
+ * a table then it is not needed to have union all (like Inheritance.Table_Per_Class) in backGround query
+ * or any join fetch to boost query speed, but there is a problem that there is no insert or delete from
+ * subclasses and all of them will be inserted to superClass annotated by
+ * @Inheritance(strategy = InheritanceType.SINGLE_TABLE); this table makes
+ * difference between data belong to other table with @DiscriminatorColumn
  */
 
 //@MappedSuperclass
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn
 public abstract class BillingDetail {
     @Id
     @GenericGenerator(name = "sequence_generator",
