@@ -35,7 +35,7 @@ public abstract class BillingDetail {
     private Long id;
 
 
-//    @Column(name = "Owner", columnDefinition = "VARCHAR(100)")
+    @Column(name = "Owner", columnDefinition = "VARCHAR(100)")
     @Size(
             min = 2,
             max = 100,

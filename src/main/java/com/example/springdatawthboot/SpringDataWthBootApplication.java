@@ -10,8 +10,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 
 
@@ -37,15 +35,14 @@ public class SpringDataWthBootApplication {
 
         CreditCard creditCard = new CreditCard();
         creditCard.setCardNumber("845612");
-        creditCard.setOwner("alah");
-        creditCard.setExpDate(Timestamp.from(Instant.now()));
+        creditCard.setOwner("Hello");
         creditCard = service.save(creditCard);
         System.out.println(creditCard.getId());
 
         List<BankAccount> bankAccounts = bankAccountService.bankAccounts("opa");
         List<CreditCard> accounts = service.creditCards("5022_2913_1489_0888");
 
-        List<CreditCard> cards = service.findByOwner("alah");
+        List<CreditCard> cards = service.findByOwner("Hello");
         accounts.forEach(s -> System.out.println(s.getOwner()));
         bankAccounts.forEach(d -> System.out.println(d.getBankName()));
 
