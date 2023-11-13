@@ -20,6 +20,7 @@ public class Dimensions extends Measure{
     @Basic
     private BigDecimal depth;
 
+
     @Basic
     private BigDecimal height;
 
