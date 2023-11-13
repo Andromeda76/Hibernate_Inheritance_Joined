@@ -3,13 +3,17 @@ package com.example.springdatawthboot;
 
 import com.example.springdatawthboot.entity.bank.BankAccount;
 import com.example.springdatawthboot.entity.bank.CreditCard;
+import com.example.springdatawthboot.entity.dimension.Dimensions;
+import com.example.springdatawthboot.entity.dimension.Item;
 import com.example.springdatawthboot.service.partOne.BankAccountService;
 import com.example.springdatawthboot.service.partOne.CreditCardService;
+import com.example.springdatawthboot.service.partOne.ItemService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
@@ -20,16 +24,41 @@ public class SpringDataWthBootApplication {
 
 
     private final BankAccountService bankAccountService;
+    private final ItemService itemService;
 
     public SpringDataWthBootApplication(@Qualifier("bankAccountService")
-                                    BankAccountService bankAccountService){
+                                    BankAccountService bankAccountService,
+                                        @Qualifier("itemService")
+                                    ItemService itemService){
             this.bankAccountService = bankAccountService;
+            this.itemService = itemService;
         }
 
 
     public static void main(String[] args) {
         SpringApplication.run(SpringDataWthBootApplication.class, args);
     }
+
+
+    @Bean
+    public Object itemController(){
+        Item item = new Item();
+        Dimensions dimensions = new Dimensions();
+
+        dimensions.setName("kilo");
+        dimensions.setSymbol("@@@@@@@");
+        dimensions.setHeight(new BigDecimal(1000000));
+        dimensions.setDepth(new BigDecimal(45000000));
+        item.setDimensions(dimensions);
+
+        item = itemService.saveItem(item);
+
+        System.out.println(item.getId());
+
+        return item;
+    }
+
+
 
 
     @Bean

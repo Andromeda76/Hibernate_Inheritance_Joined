@@ -13,7 +13,7 @@ import org.hibernate.annotations.Parameter;
 
 //@MappedSuperclass
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class BillingDetail {
     @Id
     @GenericGenerator(name = "sequence_generator",
